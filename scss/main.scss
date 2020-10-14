@@ -1,18 +1,7 @@
-/*
-COLORS:
+@import "abstract/variables";
+@import "abstract/animations";
+@import "components/buttons";
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
-$color-primary: #55c57a;
-$color-secondary: #28b485;
-$color-terc: #7ed56f;
-
-$color-gray: #777;
-$color-white: #fff;
 
 * {
   margin: 0;
@@ -89,75 +78,37 @@ body {
   animation-timing-function: easy-out;
 }
 
-@keyframes moveInLeft{
-  0% {
-      opacity: 0;
-      transform: translateX(-12rem);
-      transform: translateY(-8rem);
-  }
-  80%{
-      opacity: 0.5;
-      transform: translateX(3rem);
-  }
-  100%{
-      opacity: 1;
-      transform: translateX(0);
-      transform: translateY(0);
-  }
-}
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
 
-@keyframes moveInRight{
-  0% {
-      opacity: 0;
-      transform: translateX(8rem);
+  &:not(:last-child) {
+    margin-bottom: 6rem;
   }
-  80%{
-      opacity: 0.5;
-      transform: translateX(-3rem);
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
   }
-  100%{
-      opacity: 1;
-      transform: translateX(0);
+
+  [class^="col-"] {
+    float: left;
+    background-color: rgb(34, 51, 206);
+    &:not(:last-child) {
+      margin-right: $space-horisontal;
+    }
   }
-}
 
-@keyframes moveInBottom{
-  0% {
-      opacity: 0;
-      transform: translateY(3rem);
+  .col-1-of-2 {
+    width: calc((100% - #{$space-horisontal}) / 2);
   }
-  100%{
-      opacity: 1;
-      transform: translateY(0);
+
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$space-horisontal}) / 3);
   }
-}
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all .2s;
-}
-
-.btn:hover {
-  transform: translateY(-.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .7);
-}
-
-.btn:active {
-  transform: translateY(-.1rem);
-  box-shadow: 0 .5rem .7rem rgba(0, 0, 0, .2);
-}
-
-.btn-white {
-  background-color: $color-white;
-  color: $color-gray;
-}
-
-.btn-animated {
-  animation: moveInBottom 1s ease-out .75s;
-  animation-fill-mode: backwards;
+  .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * #{$space-horisontal}) / 3) + #{$space-horisontal});
+  }
 }
